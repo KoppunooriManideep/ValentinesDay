@@ -5,10 +5,10 @@ const heroGif = document.getElementById("heroGif");
 const heartsContainer = document.querySelector(".hearts");
 
 const lines = [
-  "Hmm... maybe not?",
-  "Think again...",
-  "Are you absolutely sure?",
-  "It's your last chance."
+  "Hmm... maybe not? 🤭",
+  "Think again... 🥺",
+  "Are you absolutely sure? 👀",
+  "It's your last chance. 😘"
 ];
 
 const gifSteps = [
@@ -83,7 +83,7 @@ noBtn.addEventListener("click", () => {
     if (heroGif) {
       heroGif.src = gifSteps[gifSteps.length - 1];
     }
-    smallText.textContent = "I knew you'd say yes!!!";
+    smallText.textContent = "I knew you'd say yes!!! 😎";
   }
 });
 
