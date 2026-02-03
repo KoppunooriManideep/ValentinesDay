@@ -1,15 +1,29 @@
 const bgMusic = document.getElementById("bgMusic");
 const heartsContainer = document.querySelector(".hearts");
+const audioPrompt = document.getElementById("audioPrompt");
 
 const ensureMusic = async () => {
   if (!bgMusic) return;
   if (!bgMusic.paused) return;
   try {
     await bgMusic.play();
+    if (audioPrompt) {
+      audioPrompt.classList.add("hidden");
+    }
   } catch (error) {
     // Autoplay may be blocked until user taps.
   }
 };
+
+if (audioPrompt) {
+  audioPrompt.addEventListener("click", ensureMusic);
+  audioPrompt.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      ensureMusic();
+    }
+  });
+}
 
 if (bgMusic) {
   ensureMusic();

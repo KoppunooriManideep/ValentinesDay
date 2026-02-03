@@ -13,16 +13,18 @@ body {
   margin: 0;
   font-family: "Nunito", "Segoe UI", sans-serif;
   background: radial-gradient(circle at 20% 20%, #ffeef5 0%, #ffd9e6 45%, #f7b8d1 100%);
-  min-height: 100vh;
+  min-height: 100svh;
   color: #5a2235;
   overflow-x: hidden;
 }
 
 .page {
-  min-height: 100vh;
+  min-height: 100svh;
+  height: 100svh;
   display: grid;
   place-items: center;
-  padding: 24px 16px;
+  padding: 20px 16px;
+  overflow: hidden;
   background-image:
     radial-gradient(circle at 85% 15%, rgba(255, 255, 255, 0.6) 0, rgba(255, 255, 255, 0) 40%),
     radial-gradient(circle at 10% 80%, rgba(255, 255, 255, 0.55) 0, rgba(255, 255, 255, 0) 45%);
@@ -150,4 +152,15 @@ h1 {
 @keyframes pageFadeIn {
   from { opacity: 0; transform: translateY(6px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-height: 740px) {
+  .card {
+    padding: 22px 18px 28px;
+  }
+
+  .sticker {
+    width: 200px;
+    height: 182px;
+  }
 }
