@@ -1,14 +1,17 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Our Valentine</title>
+  <link rel="icon" type="image/svg+xml" href="assets/heart.svg" />
   <link rel="stylesheet" href="memories.css" />
 </head>
 <body>
-  <div class="page">
+  <div class="page fade-in">
+    <div class="hearts" aria-hidden="true"></div>
     <header class="hero">
+      <audio id="bgMusic" src="assets/music.mp3" loop></audio>
       <p class="tag">Happy Valentine's Day</p>
       <h1>Bujjuluuu</h1>
       <p class="message">
@@ -37,5 +40,6 @@
       <a class="back" href="index.html">Back to the question</a>
     </footer>
   </div>
+  <script src="memories.js"></script>
 </body>
 </html>

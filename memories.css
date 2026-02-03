@@ -1,4 +1,4 @@
-﻿@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Nunito:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Dancing+Script:wght@600;700&family=Nunito:wght@400;700&display=swap");
 
 :root {
   --pink-1: #ffe6f0;
@@ -37,6 +37,7 @@ body {
   box-shadow: 0 16px 32px rgba(176, 58, 102, 0.18);
   text-align: center;
   animation: cardPop 0.8s ease;
+  position: relative;
 }
 
 .tag {
@@ -61,8 +62,9 @@ h1 {
 
 .signature {
   margin: 0;
-  font-family: "Baloo 2", "Segoe UI", sans-serif;
+  font-family: "Dancing Script", "Baloo 2", "Segoe UI", sans-serif;
   color: #8c3c5b;
+  font-size: 1.2rem;
 }
 
 .gallery {
@@ -96,6 +98,43 @@ h1 {
   display: block;
 }
 
+.hearts {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.heart {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: #ff8fb1;
+  transform: rotate(45deg);
+  opacity: 0.7;
+  animation: floatHeart 8s linear infinite;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: #ff8fb1;
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: -7px;
+  left: 0;
+}
+
+.heart::after {
+  left: -7px;
+  top: 0;
+}
 
 .footer {
   margin-top: 8px;
@@ -111,7 +150,22 @@ h1 {
   text-decoration: underline;
 }
 
+.fade-in {
+  animation: pageFadeIn 0.6s ease;
+}
+
 @keyframes cardPop {
   0% { transform: translateY(20px) scale(0.98); opacity: 0; }
   100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+@keyframes pageFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes floatHeart {
+  0% { transform: translateY(110vh) rotate(45deg); opacity: 0; }
+  15% { opacity: 0.6; }
+  100% { transform: translateY(-10vh) rotate(45deg); opacity: 0; }
 }

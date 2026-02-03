@@ -2,12 +2,13 @@ const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
 const smallText = document.getElementById("smallText");
 const heroGif = document.getElementById("heroGif");
+const heartsContainer = document.querySelector(".hearts");
 
 const lines = [
   "Hmm... maybe not?",
   "Think again...",
   "Are you absolutely sure?",
-  "I knew you would say yes..!",
+  "It's your last chance."
 ];
 
 const gifSteps = [
@@ -20,6 +21,20 @@ const gifSteps = [
 
 let noClicks = 0;
 const maxNoClicks = 4;
+
+if (heartsContainer) {
+  const heartCount = 18;
+  for (let i = 0; i < heartCount; i += 1) {
+    const heart = document.createElement("span");
+    heart.className = "heart";
+    heart.style.left = `${Math.random() * 100}%`;
+    heart.style.animationDelay = `${Math.random() * 6}s`;
+    heart.style.animationDuration = `${6 + Math.random() * 6}s`;
+    heart.style.opacity = `${0.4 + Math.random() * 0.4}`;
+    heart.style.transform = `translateY(${100 + Math.random() * 30}vh) rotate(45deg)`;
+    heartsContainer.appendChild(heart);
+  }
+}
 
 noBtn.addEventListener("click", () => {
   noClicks += 1;
@@ -68,29 +83,13 @@ noBtn.addEventListener("click", () => {
     if (heroGif) {
       heroGif.src = gifSteps[gifSteps.length - 1];
     }
-    smallText.textContent = "I knew you’d say yes!!!";
+    smallText.textContent = "I knew you'd say yes!!!";
   }
 });
 
 yesBtn.addEventListener("click", () => {
-  const confetti = document.createElement("div");
-  confetti.className = "confetti";
-  document.body.appendChild(confetti);
-
-  const colors = ["#ff5f8f", "#ff8fb1", "#ffd166", "#9bf6ff", "#c3f0ca"];
-  const pieces = 80;
-
-  for (let i = 0; i < pieces; i += 1) {
-    const piece = document.createElement("span");
-    piece.className = "confetti-piece";
-    piece.style.left = `${Math.random() * 100}%`;
-    piece.style.background = colors[i % colors.length];
-    piece.style.animationDelay = `${Math.random() * 0.3}s`;
-    piece.style.transform = `rotate(${Math.random() * 360}deg)`;
-    confetti.appendChild(piece);
-  }
-
+  document.body.classList.add("fade-out");
   setTimeout(() => {
-    window.location.href = "memories.html";
-  }, 1200);
+    window.location.href = "celebration.html";
+  }, 350);
 });
