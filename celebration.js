@@ -1,6 +1,12 @@
 const heartsContainer = document.querySelector(".hearts");
 const celebrateSound = document.getElementById("celebrateSound");
 
+const navigationEntry = performance.getEntriesByType("navigation")[0];
+const navigationType = navigationEntry ? navigationEntry.type : undefined;
+if (navigationType === "reload" || (performance.navigation && performance.navigation.type === 1)) {
+  window.location.replace("index.html");
+}
+
 const confetti = document.createElement("div");
 confetti.className = "confetti";
 document.body.appendChild(confetti);

@@ -2,6 +2,13 @@
 const heartsContainer = document.querySelector(".hearts");
 const typewriter = document.getElementById("typewriter");
 
+const navigationEntry = performance.getEntriesByType("navigation")[0];
+const navigationType = navigationEntry ? navigationEntry.type : undefined;
+if (navigationType === "reload" || (performance.navigation && performance.navigation.type === 1)) {
+  window.location.replace("index.html");
+}
+
+
 const ensureMusic = async () => {
   if (!bgMusic) return;
   if (!bgMusic.paused) return;

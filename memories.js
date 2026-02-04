@@ -1,29 +1,22 @@
-const bgMusic = document.getElementById("bgMusic");
+﻿const bgMusic = document.getElementById("bgMusic");
 const heartsContainer = document.querySelector(".hearts");
-const audioPrompt = document.getElementById("audioPrompt");
+
+const navigationEntry = performance.getEntriesByType("navigation")[0];
+const navigationType = navigationEntry ? navigationEntry.type : undefined;
+if (navigationType === "reload" || (performance.navigation && performance.navigation.type === 1)) {
+  window.location.replace("index.html");
+}
+
 
 const ensureMusic = async () => {
   if (!bgMusic) return;
   if (!bgMusic.paused) return;
   try {
     await bgMusic.play();
-    if (audioPrompt) {
-      audioPrompt.classList.add("hidden");
-    }
   } catch (error) {
     // Autoplay may be blocked until user taps.
   }
 };
-
-if (audioPrompt) {
-  audioPrompt.addEventListener("click", ensureMusic);
-  audioPrompt.addEventListener("keydown", (event) => {
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault();
-      ensureMusic();
-    }
-  });
-}
 
 if (bgMusic) {
   ensureMusic();

@@ -17,6 +17,7 @@ body {
   color: #5a2235;
   background: radial-gradient(circle at 15% 20%, #fff0f6 0%, #ffd9e6 45%, #f7b8d1 100%);
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .page {
@@ -26,6 +27,7 @@ body {
   flex-direction: column;
   gap: 24px;
   align-items: center;
+  overflow-x: hidden;
 }
 
 .hero {
@@ -151,7 +153,19 @@ h1 {
 @media (max-width: 720px) {
   .gallery {
     grid-template-columns: 1fr;
-    gap: 12px;
+    gap: 14px;
+    justify-items: center;
+  }
+
+  .polaroid-card,
+  .surprise-card {
+    width: min(320px, 92vw);
+  }
+
+  .polaroid-card img,
+  .polaroid-card video,
+  .surprise-gif {
+    aspect-ratio: 3 / 4;
   }
 }
 
@@ -198,24 +212,6 @@ h1 {
   top: 0;
 }
 
-.audio-prompt {
-  position: fixed;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  background: rgba(255, 247, 251, 0.88);
-  color: #7b2847;
-  font-family: "Baloo 2", "Segoe UI", sans-serif;
-  font-size: 1rem;
-  text-align: center;
-  padding: 20px;
-  z-index: 1002;
-  cursor: pointer;
-}
-
-.audio-prompt.hidden {
-  display: none;
-}
 
 .footer {
   margin-top: 8px;
