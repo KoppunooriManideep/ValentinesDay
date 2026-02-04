@@ -58,6 +58,9 @@ h1 {
 .message {
   margin: 0 0 12px;
   line-height: 1.6;
+  font-family: "Dancing Script", "Baloo 2", "Segoe UI", sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.3px;
 }
 
 .signature {
@@ -70,32 +73,80 @@ h1 {
 .gallery {
   width: min(900px, 94vw);
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 16px;
 }
 
-.gallery figure {
-  margin: 0;
-  background: #fff;
-  border-radius: 16px;
-  overflow: hidden;
+.polaroid-card {
+  margin: 20px;
+  background: #fff9fc;
+  border-radius: 18px;
+  padding: 10px 10px 18px;
+  box-shadow:
+    0 12px 24px rgba(176, 58, 102, 0.16),
+    0 2px 0 rgba(255, 255, 255, 0.9) inset;
   border: 2px solid #f4c1d6;
-  box-shadow: 0 8px 18px rgba(176, 58, 102, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.polaroid-card img,
+.polaroid-card video {
+  width: 100%;
+  height: auto;
   aspect-ratio: 4 / 5;
-}
-
-.gallery img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+  object-fit: cover;
+  border-radius: 12px;
   display: block;
 }
 
-.gallery video {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+.polaroid-card figcaption {
+  font-family: "Dancing Script", "Baloo 2", "Segoe UI", sans-serif;
+  font-size: 1.05rem;
+  color: #7b2847;
+  text-align: center;
+}
+
+.tilt-1 { transform: rotate(-2deg); }
+.tilt-2 { transform: rotate(1.5deg); }
+.tilt-3 { transform: rotate(-1deg); }
+.tilt-4 { transform: rotate(2deg); }
+.tilt-5 { transform: rotate(-1.5deg); }
+.tilt-6 { transform: rotate(1deg); }
+
+.video-card video {
+  background: #fff;
+}
+
+.surprise-card {
+  text-decoration: none;
+  align-items: center;
+  justify-content: center;
+  min-height: 320px;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.9) 0, rgba(255, 255, 255, 0) 40%),
+    linear-gradient(135deg, #ffe3ef 0%, #ffc3da 50%, #ffeef6 100%);
+  border: 3px solid #ff8fb1;
+  box-shadow:
+    0 18px 36px rgba(176, 58, 102, 0.2),
+    0 0 0 6px rgba(255, 143, 177, 0.2);
+}
+
+.surprise-gif {
+  width: min(220px, 60vw);
+  height: auto;
   display: block;
+  filter: drop-shadow(0 10px 18px rgba(176, 58, 102, 0.25));
+}
+
+.surprise-card figcaption {
+  font-size: 1.25rem;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
 }
 
 .hearts {

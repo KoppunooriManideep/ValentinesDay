@@ -1,29 +1,16 @@
-const bgMusic = document.getElementById("bgMusic");
+﻿const bgMusic = document.getElementById("bgMusic");
 const heartsContainer = document.querySelector(".hearts");
-const audioPrompt = document.getElementById("audioPrompt");
+const typewriter = document.getElementById("typewriter");
 
 const ensureMusic = async () => {
   if (!bgMusic) return;
   if (!bgMusic.paused) return;
   try {
     await bgMusic.play();
-    if (audioPrompt) {
-      audioPrompt.classList.add("hidden");
-    }
   } catch (error) {
     // Autoplay may be blocked until user taps.
   }
 };
-
-if (audioPrompt) {
-  audioPrompt.addEventListener("click", ensureMusic);
-  audioPrompt.addEventListener("keydown", (event) => {
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault();
-      ensureMusic();
-    }
-  });
-}
 
 if (bgMusic) {
   ensureMusic();
@@ -44,18 +31,28 @@ if (heartsContainer) {
   }
 }
 
-const messageEl = document.querySelector(".message");
-if (messageEl) {
-  const fullText = messageEl.textContent.trim().replace(/\s+/g, " ");
+if (typewriter) {
+  const message = "Our cutest moment.. ✨";
   let index = 0;
-  messageEl.textContent = "";
+  let direction = 1;
 
   const step = () => {
-    messageEl.textContent = fullText.slice(0, index);
-    index += 1;
-    if (index <= fullText.length) {
-      setTimeout(step, 45);
+    typewriter.textContent = message.slice(0, index);
+
+    if (direction === 1 && index >= message.length) {
+      direction = -1;
+      setTimeout(step, 900);
+      return;
     }
+
+    if (direction === -1 && index <= 0) {
+      direction = 1;
+      setTimeout(step, 300);
+      return;
+    }
+
+    index += direction;
+    setTimeout(step, direction === 1 ? 70 : 40);
   };
 
   setTimeout(step, 300);

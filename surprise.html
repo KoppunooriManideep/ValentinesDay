@@ -1,0 +1,29 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Surprise</title>
+  <link rel="icon" type="image/svg+xml" href="assets/heart.svg" />
+  <link rel="stylesheet" href="surprise.css" />
+</head>
+<body>
+  <div class="page fade-in">
+    <div class="hearts" aria-hidden="true"></div>
+    <main class="card" role="main">
+      <audio id="bgMusic" src="assets/music.mp3" loop></audio>
+      <div class="ribbon">Special</div>
+      <h1>Yayyy...🎉</h1>
+      <p id="typewriter" class="typewriter" aria-live="polite"></p>
+      <div class="video-wrap">
+        <video controls playsinline preload="metadata">
+          <source src="assets/8.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <a class="back" href="memories.html">Back to photos</a>
+    </main>
+  </div>
+  <script src="surprise.js"></script>
+</body>
+</html>
